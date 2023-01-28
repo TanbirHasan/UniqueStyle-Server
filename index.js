@@ -14,7 +14,8 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-const uri = `mongodb+srv://user:uQQYnj676ysICqUT@cluster0.ujkkm.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://uniqueuser:hptO5MJNiFCc6gFa@cluster0.pdqsnad.mongodb.net/?retryWrites=true&w=majority`;
+
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -37,6 +38,8 @@ async function run(){
        const topdealscollection = client
          .db("unique")
          .collection("topdealsproducts");
+
+      const featureProducts = client.db("unique").collection("FeatureProducts")
        const userCollectionFull = client
          .db("unique")
          .collection("updateduserdata");
@@ -62,6 +65,15 @@ async function run(){
       app.get("/allproducts", async (req,res) => {
         const query = {};
         const cursor = productcollection.find(query);
+        const products = await cursor.toArray();
+        res.send(products);
+
+      })
+
+
+      app.get("/featureproducts", async (req,res) => {
+        const query = {};
+        const cursor = featureProducts.find(query);
         const products = await cursor.toArray();
         res.send(products);
 
