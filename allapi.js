@@ -173,6 +173,7 @@ async function run() {
       // getting individual user info
   
       app.get("/userInfo",verifyJWT, async (req, res) => {
+        console.log(req)
         const email = req.query.email;
   
         const query = { email: email };

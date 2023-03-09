@@ -4,6 +4,9 @@ const productRouter = require('./routes/v1/products.route')
 const featureProducts = require('./routes/v1/featureProducts.route')
 const dealsOftheDayProducts = require('./routes/v1/dealsProduct.route')
 const ordersProducts = require('./routes/v1/orders.route')
+const stripeRoute = require('./routes/v1/stripe.route')
+const usersRoute = require('./routes/v1/users.route')
+
 
 
 
@@ -11,10 +14,6 @@ const cors = require("cors");
 var jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-const stripe = require("stripe")(
-  "  sk_test_51L3crVI20gp0i97mRSUa6lJ5ZbgZAnYdK9cAoJ13JyFAXlVKpyKTm2F2Lb58MrCmc9GhUEWnW7nPprb3C2VelXbO00iJZ5Iefm"
-);
-const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
 const viewCount = require("./middlewares/viewCounts");
 const limiter = require("./middlewares/limiter");
@@ -55,6 +54,8 @@ app.use('/products',productRouter)
 app.use('/featureProducts',featureProducts)
 app.use("/dealsoftheday",dealsOftheDayProducts)
 app.use("/",ordersProducts)
+app.use("/create-payment-intent",stripeRoute)
+app.use("/",usersRoute)
 
 
 
