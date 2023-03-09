@@ -15,5 +15,4 @@ router.route("/:id").get(productsController.singleProducts)
 
 
 
-
-  module.exports = router;
+ module.exports = router;

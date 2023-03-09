@@ -2,6 +2,8 @@ const express = require("express");
 
 const productRouter = require('./routes/v1/products.route')
 const featureProducts = require('./routes/v1/featureProducts.route')
+const dealsOftheDayProducts = require('./routes/v1/dealsProduct.route')
+const ordersProducts = require('./routes/v1/orders.route')
 
 
 
@@ -51,6 +53,8 @@ init()
 
 app.use('/products',productRouter)
 app.use('/featureProducts',featureProducts)
+app.use("/dealsoftheday",dealsOftheDayProducts)
+app.use("/",ordersProducts)
 
 
 

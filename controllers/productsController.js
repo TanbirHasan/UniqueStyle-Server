@@ -4,7 +4,6 @@ const { getClient } = require("../utils/dbConnect");
 const client = getClient();
 const productcollection = client.db("unique").collection("products");
 
-
 const getAllProducts = async (req, res, next) => {
   try {
     const query = {};
@@ -22,14 +21,16 @@ const getAllProducts = async (req, res, next) => {
   // })
 };
 
+const singleProducts = async (req, res, next) => {
+  try {
+    const id = req.params.id;
 
-
-const singleProducts = async (req, res) => {
-  const id = req.params.id;
-
-  const query = { _id: ObjectId(id) };
-  const order = await productcollection.findOne(query);
-  res.send(order);
+    const query = { _id: ObjectId(id) };
+    const order = await productcollection.findOne(query);
+    res.send(order);
+  } catch (err) {
+    next(err);
+  }
 };
 
 module.exports = {
