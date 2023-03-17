@@ -21,6 +21,19 @@ const getAllProducts = async (req, res, next) => {
   // })
 };
 
+const getCategoryProducts = async (req, res, next) => {
+  try {
+    const categories = req.query.categories;
+
+    const query = { categories };
+
+    const cursor = productcollection.find(query);
+    const products = await cursor.toArray();
+    res.send(products);
+  } catch (err) {
+    next(err);
+  }
+};
 const singleProducts = async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -36,4 +49,5 @@ const singleProducts = async (req, res, next) => {
 module.exports = {
   getAllProducts,
   singleProducts,
+  getCategoryProducts,
 };

@@ -21,18 +21,18 @@ async function run() {
   
       // getting products based on specific category
   
-      app.get("/products", async (req, res) => {
+      // app.get("/products", async (req, res) => {
   
         
-        const categories = req.query.categories;
+      //   const categories = req.query.categories;
      
   
-        const query = { categories };
+      //   const query = { categories };
   
-        const cursor = productcollection.find(query);
-        const products = await cursor.toArray();
-        res.send(products);
-      });
+      //   const cursor = productcollection.find(query);
+      //   const products = await cursor.toArray();
+      //   res.send(products);
+      // });
   
       // getting product
   

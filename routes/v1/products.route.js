@@ -9,9 +9,10 @@ const productsController = require("../../controllers/productsController")
 
 // we will get all products by hitting this route
 router.route("/").get(productsController.getAllProducts)
+router.route("/cate").get(productsController.getCategoryProducts)
 
 
-router.route("/:id").get(productsController.singleProducts)
+router.route("/find/:id").get(productsController.singleProducts)
 
 
 

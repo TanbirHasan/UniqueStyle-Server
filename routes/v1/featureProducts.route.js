@@ -12,7 +12,7 @@ const fetatureProductsController = require("../../controllers/featureProductsCon
 
 router.route("/").get(fetatureProductsController.getFeatureProducts)
 
-router.route("/:id").get(fetatureProductsController.getSingelFeaturePro)
+router.route("/find/:id").get(fetatureProductsController.getSingelFeaturePro)
 
 
 
