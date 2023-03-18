@@ -50,6 +50,23 @@ const getOrderProducts = async (req, res, next) => {
   }
 };
 
+
+const usersOrder =  async (req, res,next) => {
+  try{
+    const email = req.query.email;
+    const query = { email: email };
+
+    console.log(query)
+    const cursor = ordercollection.find(query);
+    const orders = await cursor.toArray();
+    res.send(orders);
+  }
+  catch(err){
+    next(err)
+  }
+ 
+};
+
 const getOrder = async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -87,5 +104,6 @@ module.exports = {
   clientOrder,
   getOrder,
   getOrderProducts,
-  updatingOrder
+  updatingOrder,
+  usersOrder
 };
